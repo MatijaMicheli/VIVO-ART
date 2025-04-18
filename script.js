@@ -1,43 +1,54 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const artwork = document.querySelectorAll('.artwork');
+document.addEventListener("DOMContentLoaded", () => {
+  // Animazione delle opere d'arte
+  const artwork = document.querySelectorAll(".artwork");
 
-    const animateArtworks = () => {
-        artwork.forEach((artwork, index) => {
-            setTimeout(() => {
-                artwork.style.opacity = '1';
-                artwork.style.transform = 'translateY(0)';
-            }, 100 * index);
-        });
-    };
-
-    artwork.forEach(artwork => {
-        artwork.style.opacity = '0';
-        artwork.style.transform = 'translateY(20px)';
-        artwork.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  const animateArtworks = () => {
+    artwork.forEach((artwork, index) => {
+      setTimeout(() => {
+        artwork.style.opacity = "1";
+        artwork.style.transform = "translateY(0)";
+      }, 100 * index);
     });
+  };
 
-    setTimeout(animateArtworks, 300);
+  artwork.forEach((artwork) => {
+    artwork.style.opacity = "0";
+    artwork.style.transform = "translateY(20px)";
+    artwork.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  });
 
-    const container = document.querySelector(".aurora-container");
-    const video = document.querySelector(".aurora-video");
+  setTimeout(animateArtworks, 300);
 
-    let played = false;
+  // Gestione video aurora
+  const container = document.querySelector(".aurora-container");
+  const video = document.querySelector(".aurora-video");
 
-    container.addEventListener("mouseenter", () => {
-        if (!played) {
-            video.currentTime = 0;
-            video.style.opacity = 1;
-            video.play();
-            played = true;
+  let played = false;
 
-            setInterval(() => {
-                video.currentTime = 0;
-                video.play();
-            }, 10000); // Ogni 10 secondi
-        }
-    });
+  container.addEventListener("mouseenter", () => {
+    if (!played) {
+      video.currentTime = 0;
+      video.style.opacity = 1;
+      video.play();
+      played = true;
 
-    video.addEventListener("ended", () => {
-        // Il video si ripeterà automaticamente ogni 10 secondi
-    });
+      setInterval(() => {
+        video.currentTime = 0;
+        video.play();
+      }, 10000); // Ogni 10 secondi
+    }
+  });
+
+  video.addEventListener("ended", () => {
+    // Il video si ripeterà automaticamente ogni 10 secondi
+  });
+
+  // Logica del menu dropdown
+  const menuToggle = document.getElementById("menu-toggle");
+  const dropdownMenu = document.getElementById("dropdown-menu");
+
+  menuToggle.addEventListener("click", () => {
+    dropdownMenu.classList.toggle("dropdown-window");
+    menuToggle.classList.toggle("active");
+  });
 });
