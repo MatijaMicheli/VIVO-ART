@@ -1,0 +1,14 @@
+# Ignora file temporanei di sistema
+.DS_Store
+Thumbs.db
+
+# Ignora file di log
+*.log
+
+# Ignora cartelle di dipendenze (es. Node.js, Python, ecc.)
+node_modules/
+venv/
+
+# Ignora qualsiasi altro file che non vuoi tracciare
+*.bak
+*.tmp
