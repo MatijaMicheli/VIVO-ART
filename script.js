@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Animazione delle opere d'arte
   const artwork = document.querySelectorAll(".artwork");
 
   const animateArtworks = () => {
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(animateArtworks, 300);
 
-  // Gestione video aurora
   const container = document.querySelector(".aurora-container");
   const video = document.querySelector(".aurora-video");
 
@@ -41,14 +39,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   video.addEventListener("ended", () => {
     // Il video si ripeterà automaticamente ogni 10 secondi
-  });
-
-  // Logica del menu dropdown
-  const menuToggle = document.getElementById("menu-toggle");
-  const dropdownMenu = document.getElementById("dropdown-menu");
-
-  menuToggle.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("dropdown-window");
-    menuToggle.classList.toggle("active");
   });
 });
