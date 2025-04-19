@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ANIMAZIONE ARTWORK
   const artwork = document.querySelectorAll(".artwork");
 
   const animateArtworks = () => {
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(animateArtworks, 300);
 
+  // VIDEO AURORA
   const container = document.querySelector(".aurora-container");
   const video = document.querySelector(".aurora-video");
 
@@ -33,11 +35,40 @@ document.addEventListener("DOMContentLoaded", () => {
       setInterval(() => {
         video.currentTime = 0;
         video.play();
-      }, 10000); // Ogni 10 secondi
+      }, 10000);
     }
   });
 
-  video.addEventListener("ended", () => {
-    // Il video si ripeterà automaticamente ogni 10 secondi
-  });
+// MENU ON-DEMAND CORRETTO
+  const onDemandButton = document.getElementById("onDemandButton");
+  const onDemandMenu = document.getElementById("onDemandMenu");
+
+  if (onDemandButton && onDemandMenu) {
+    const toggleMenu = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  
+  // Forza il reflow per l'animazione
+  void onDemandMenu.offsetHeight;
+  
+  onDemandMenu.classList.toggle("hidden");
+};
+
+    const closeMenu = (e) => {
+      if (!onDemandMenu.contains(e.target) && !onDemandButton.contains(e.target)) {
+        onDemandMenu.classList.add("hidden");
+      }
+    };
+
+    // Aggiungi event listeners
+    onDemandButton.addEventListener("click", toggleMenu);
+    document.addEventListener("click", closeMenu);
+
+    // Fix per dispositivi touch
+    onDemandButton.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      toggleMenu(e);
+    });
+  }
 });
+

@@ -3,21 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="VIVO ART - Modern Art Portfolio. Impressionistic painter and art therapist based in New Zealand."
-    />
+    <meta name="description" content="VIVO ART - Modern Art Portfolio. Impressionistic painter and art therapist based in New Zealand."/>
     <title>VIVO ART - Modern Art Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Oregano:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Oregano:ital@0;1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -29,26 +20,61 @@
       <h1>Vivo Art</h1>
     </header>
 
-    <nav class="main-menu">
-      <ul>
-        <li><a href="index.html" aria-label="Home">
-          <img src="icons/home.png" alt="Home">
-            <span class="label">Home</span>
-        </a></li>
-        <li><a href="portfolio.html" aria-label="Gallery">
-          <img src="icons/art-gallery.png" alt="Gallery">
-            <span class="label">Gallery</span>
-        </a></li>
-        <li><a href="contacts.html" aria-label="Contacts">
-          <img src="icons/communicate.png" alt="Contacts">
-            <span class="label">Contacts</span>
-          </a></li>
-        <li><a href="requests.html" aria-label="On-Demand">
-          <img src="icons/ondemand.png" alt="On-Demand">
-            <span class="label">On-Demand</span>
-        </a></li>
+<nav class="main-menu">
+  <ul class="flex space-x-4">
+    <li>
+      <a href="index.html" aria-label="Home" class="flex items-center space-x-2">
+        <img src="icons/home.png" alt="Home" class="w-6 h-6">
+        <span class="label">Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="portfolio.html" aria-label="Gallery" class="flex items-center space-x-2">
+        <img src="icons/art-gallery.png" alt="Gallery" class="w-6 h-6">
+        <span class="label">Gallery</span>
+      </a>
+    </li>
+    <li>
+      <a href="contacts.html" aria-label="Contacts" class="flex items-center space-x-2">
+        <img src="icons/communicate.png" alt="Contacts" class="w-6 h-6">
+        <span class="label">Contacts</span>
+      </a>
+    </li>
+    <!--<li class="ondemand-dropdown relative">
+      <a href="#" id="onDemandButton" aria-label="On-Demand" class="flex items-center space-x-2">
+        <img src="icons/ondemand.png" alt="On-Demand" class="w-6 h-6">
+        <span class="label">On-Demand</span>
+      </a>
+      <ul id="onDemandMenu" class="ondemand-menu hidden bg-white text-gray-800 rounded shadow-md mt-2 w-48 z-10">
+        <li><a href="oil-painting" class="block px-4 py-2 hover:bg-gray-200">Oil Paiting</a></li>
+        <li><a href="acrylic-painting" class="block px-4 py-2 hover:bg-gray-200">Acrylic Painting</a></li>
+        <li><a href="fantasy-made" class="block px-4 py-2 hover:bg-gray-200">Fantasy Made (AI Art)</a></li>
       </ul>
-    </nav>
+    </li>-->
+
+    <li class="ondemand-dropdown">
+  <!-- Bottone del menu -->
+  <a href="#" id="onDemandButton" class="flex items-center space-x-2" aria-label="On-Demand">
+    <img src="icons/ondemand.png" alt="On-Demand" class="w-6 h-6">
+    <span class="label">On-Demand</span>
+  </a>
+  
+  <!-- Menu a tendina -->
+  <ul id="onDemandMenu" class="ondemand-menu hidden">
+    <li><a href="oil-painting" class="flex items-center px-4 py-2 hover:bg-gray-200">
+      <img src="icons/oil.png" alt="Oil" class="w-5 h-5 mr-2"> Oil Painting
+    </a></li>
+    <li><a href="acrylic-painting" class="flex items-center px-4 py-2 hover:bg-gray-200">
+      <img src="icons/acrylic.png" alt="Acrylic" class="w-5 h-5 mr-2"> Acrylic Painting
+    </a></li>
+    <li><a href="fantasy-made" class="flex items-center px-4 py-2 hover:bg-gray-200">
+      <img src="icons/ai.png" alt="AI Art" class="w-5 h-5 mr-2"> Fantasy Made (AI Art)
+    </a></li>
+  </ul>
+</li>
+
+  </ul>
+</nav>
 
     <main role="main">
       <div class="aurora-container">
@@ -117,18 +143,20 @@
     </main>
 
     <footer>
-      <p>© 2025 VIVO ART</p>
+      <p>© 2025 VIVO ART. All rights reserved.</p>
+      <p><h5>Website created by Matija Micheli</h5></p>
       <div class="social-links">
         <a href="https://www.facebook.com/blue.dragon.79097" target="_blank"
           ><i class="fab fa-facebook"></i
         ></a>
         <a href="https://www.redbubble.com/people/7Bluedragon" target="_blank">
-        <img src="icons/redb.png" alt="Red Bubble" style="width: 35px; height: 35px; margin-top: 2px;">
+        <img src="icons/redb.png" alt="Red Bubble" style="width: 35px; height: 35px; margin-top: 2px; filter: grayscale(100%) contrast(120%);
+  transition: 0.3s ease;">
         </a>
       </div>
       <p>7windmill@gmail.com</p>
     </footer>
 
-    <script src="script.js" defer></script>
+  <script src="script.js" defer></script>
   </body>
 </html>
