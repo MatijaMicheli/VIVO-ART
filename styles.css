@@ -131,6 +131,22 @@ header h1 {
   transform: translateY(0);
 }
 
+.menu-container {
+  max-width: 100vw;
+  margin: 0 auto;
+  position: relative;
+}
+
+.main-menu::-webkit-scrollbar {
+  height: 4px;
+  background: transparent;
+}
+
+.main-menu::-webkit-scrollbar-thumb {
+  background: gold;
+  border-radius: 4px;
+}
+
 /* DROP DOWN MENU ON DEMAND */
 .hidden {
   display: none;
@@ -385,7 +401,7 @@ footer p {
 
 /* ==== DISPOSITIVI MOBILI ==== */
 
-@media (min-width: 375px) {
+@media (max-width: 420px) {
   header {
     padding: 5px 5px;
     background-position: center;
@@ -402,32 +418,44 @@ footer p {
     margin-right: 60px;
   }
 
+  .main-menu {
+    padding: 4px 0;
+    margin: 0;
+  }
   
   .main-menu ul {
     flex-direction: row;
     justify-content: center;
+    gap: 4px; /* Spaziatura uniforme tra gli elementi */
+    min-width: min-content;
   }
 
   .main-menu li {
-    box-sizing: border-box;
-    padding: 0 6px; /* Padding ridotto */ /* Margine minimo */
+    padding: 0 10px;
+    margin: 0; /* Rimuovi margin/padding precedenti */
+    flex: 0 0 auto;
   }
 
-  .main-menu a {
-    padding: 0 6px;
-    gap: 20px/* Riduce il padding interno dei link */
-  }
 
   .main-menu li a img {
-    display: flex;
-    align-items: center;
-    justify-content: content;
-    transform: scale(0.8);
+    width: 23px; /* Dimensione fissa per mobile */
+    height: 25px;
+    transform: none; /* Rimuovi lo scale precedente */
+  }
+  
+  .main-menu a {
+    padding: 0 4px !important;
+    flex-direction: row; /* Allinea icona e testo verticalmente */
+    gap: 2px;
   }
 
   .main-menu .label {
-    font-size: 0.4rem;
-    bottom: -25px;
+    font-size: 0.6rem; /* Leggermente più grande per migliorare la leggibilità */
+    position: static; /* Reset posizionamento */
+    transform: none;
+    opacity: 1; /* Mantieni visibile anche su mobile se necessario */
+    text-align: center; /* Allinea il testo sotto l'icona */
+    width: 100%;
   }
 
 
@@ -520,62 +548,14 @@ footer p {
   }
 }
 
-@media (min-width: 600px) {
-  header {
-    padding: 0;
-  }
+@media (max-width: 600px) {
 
-  .main-menu ul {
-    gap: 60px;
-  }
+}
+@media (max-width: 768px) {
+
   
 }
 
-@media (min-width: 768px) {
-  .video-container {
-    flex: 1;
-    max-height: 500px;
-  }
-
-  .aurora-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .content-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 40px;
-    width: 100%;
-    max-width: 1200px;
-  }
-  
-  
-  .text-block {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-  }
-  
-  .text-block p {
-    font-size: 1.2rem;
-    line-height: 2.5;
-    height: 464px;
-    align-items: center;
-    display: flex;
-  }
-
-
-  .artist-photo-container img {
-    width: 300px;
-    height: auto;
-    border-radius: 20px;
-  }
-  
+@media (max-width: 1024px) {
 }
 
-@media (min-width: 1024px) {
-}
