@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     artwork.style.opacity = "0";
     artwork.style.transform = "translateY(20px)";
     artwork.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
+    
+
+
   });
 
   setTimeout(animateArtworks, 300);
@@ -71,3 +75,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+    

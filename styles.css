@@ -14,6 +14,7 @@ body {
 
 /* HEADER */
 header {
+  z-index: 1000;
   background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.9)),
     url("banner.jpg") no-repeat center center;
   background-size: cover;
@@ -23,16 +24,20 @@ header {
   justify-content:space-around;
   align-items: center;
   height: 120px;
+  position: relative;
 }
 
 header h1 {
+  position: relative;
+  z-index: 2;
   color: #fff;
-  font-size: 3.2rem;
+  font-size: 5.2rem;
   margin-right: 50px;
   font-family: "Arizonia", cursive;
   text-shadow: 0 0 2px #ffd700,
     /* glow dorato soft */ 2px 2px 5px rgba(0, 0, 0, 0.5); /* ombra per profondità */
 }
+
 
 .logo-container {
   display: flex;
@@ -70,7 +75,7 @@ header h1 {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 200px;
   padding: 0;
   margin: 0;
   transform: none !important;
@@ -101,9 +106,7 @@ filter: invert(1) brightness(1.2);
  .main-menu img:hover {
   transform: translateX(-2px);
   filter: contrast(1.2) hue-rotate(30deg);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-  transform: scale(1.1);
-  
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);  
 }
 
 .main-menu a {
@@ -121,7 +124,7 @@ filter: invert(1) brightness(1.2);
   background-color: gold;
   color: #081528;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-  transform: scale(1.2);
+  transform: scale(2.2);
 }
 
  .main-menu .label {
@@ -129,6 +132,7 @@ filter: invert(1) brightness(1.2);
   transform: translateY(10px);
   transition: opacity 0.2s ease, transform 0.2s ease;
   margin-left: 12px;
+  font-size: 1.5rem;
  }
 
  .main-menu li a:hover .label {
@@ -211,7 +215,6 @@ color: black;
   width: 350px;
   height: 470px;
   flex-shrink: 0;
-  border-radius: 8px;
   overflow: hidden;
   flex: 0 0 auto;
 }
@@ -221,7 +224,7 @@ color: black;
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
-  border: 2px solid gold;
+  border: 5px inset gold;
 }
 
 .text-block {
@@ -300,7 +303,6 @@ color: black;
     black 100%
   );
   transition: all 0.5s ease;
-  border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .artist-photo-container:hover .artist-photo {
@@ -337,7 +339,7 @@ color: black;
   overflow:hidden;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transform-style: preserve-3d;
+  transform-style: preserve-3d;
   transition: transform 1s;
 }
 
@@ -351,13 +353,9 @@ color: black;
 .slide:nth-child(2) {transform: rotateY(90deg) translateZ(400px);}
 .slide:nth-child(3) {transform: rotateY(180deg) translateZ(400px);}
 .slide:nth-child(4) {transform: rotateY(270deg) translateZ(400px);}
-.slide:nth-child(5) {transform: rotateY(320deg) translateZ(400px);}
 
-.centered-slider-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+.slider-container:hover .slider {
+  animation-play-state: paused;
 }
 
 @keyframes rotate {
@@ -432,12 +430,13 @@ footer p {
 @media (max-width: 1024px) {
   .main-menu ul {
     justify-content: center;
-    gap: 20px;
+    gap: 100px;
   }
 
   .main-menu li {
    margin: 0 40px; 
   }
+  
   
   .main-menu img {
     width: 32px;
@@ -445,7 +444,7 @@ footer p {
   }
 
   .main-menu .label {
-    font-size: 0.8rem;
+    font-size: 1.2rem !important;
     bottom: -28px;
   }
 
@@ -479,6 +478,11 @@ footer p {
     text-align: center;
   }
 
+  header h1 {
+    font-size: 3.5rem;
+    padding-left: 100px;
+  }
+  
   .logo-container {
     align-items: center;
     justify-content: center;
@@ -493,7 +497,9 @@ footer p {
   .main-menu ul {
     flex-direction: row;
     justify-content: center;
-    gap: 40px;
+    gap: 40px !important;
+    padding: 0 10px;
+    margin-left: 80px !important;
   }
 
  .main-menu img {
@@ -503,12 +509,12 @@ footer p {
 
   .main-menu li {
   box-sizing: border-box;
-  min-width: fit-content;
+  min-width: fit-content !important;
   padding: 0 50px !important; /* Valore per mobile */
 }
   
  .main-menu .label {
-  font-size: 0.7rem;
+  font-size: 1rem !important;
   bottom: -25px;
 }
 
@@ -645,6 +651,12 @@ footer p {
     text-align: center;
   }
 
+  header h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding-left: 50px;
+  }
+  
   .logo {
     width: 60px;
   }
@@ -664,11 +676,10 @@ footer p {
     height: 450px;
   }
 
-  
  .main-menu ul {
     flex-direction: row;
-    justify-content:flex-start;
-    gap: 8px !important; /* Gap ridotto per mobile */
+    justify-content: center;
+    gap: 0px !important; /* Gap ridotto per mobile */
     transform: none !important; /* Rimuove scalature */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -678,8 +689,8 @@ footer p {
   }
 
   .main-menu li {
-    padding: 0 6px !important; /* Padding ridotto */
-    margin: 0 7px !important; /* Margine minimo */
+    padding: 0 2px !important; /* Padding ridotto */
+    margin: 0px 2px 0 0px !important; /* Margine minimo */
   }
 
   .main-menu a {
@@ -693,7 +704,7 @@ footer p {
  }
 
  .main-menu .label {
-  font-size: 0.4rem;
+  font-size: 0.8rem !important;
   bottom: -25px;
   margin-left: 5px;
 }
@@ -741,4 +752,3 @@ footer p {
     width: 18px !important;
     height: 18px !important;
   }
-
