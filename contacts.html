@@ -1,68 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts - VIVO ART</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="logo.png" type="image/png">
-</head>
-
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="VIVO ART - Modern Art Portfolio. Impressionistic painter and art therapist based in New Zealand."
+    />
+    <title>VIVO ART - Contacts page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Oregano:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <header>
-        <div class="nav-container">
-            <div class="logo-container">
-                <img src="logo.png" alt="VIVO ART Logo" class="logo">
-            </div>
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li><a href="contacts.html" class="nav-link active">Contacts</a></li>
-                </ul>
-            </nav>
-        </div>
-        
-        <h1>Get In Touch</h1>
+      <div class="logo-container">
+        <img class="logo" src="logo.png" alt="VIVO ART Logo" />
+      </div>
+      <h1>Vivo Art</h1>
     </header>
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="index.html" aria-label="Home" class="menu-link">
+            <img src="icons/home.png" alt="Home" class="menu-icon" />
+            <span class="label">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="portfolio.html" aria-label="Gallery" class="menu-link">
+            <img src="icons/art-gallery.png" alt="Gallery" class="menu-icon" />
+            <span class="label">Gallery</span>
+          </a>
+        </li>
+        <li>
+          <a href="contacts.html" aria-label="Contacts" class="menu-link">
+            <img src="icons/communicate.png" alt="Contacts" class="menu-icon" />
+            <span class="label">Contacts</span>
+          </a>
+        </li>
 
-    <main>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Contact Information</h2>
-                <p><i class="fas fa-envelope"></i> 7windmill@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +64 123 456 789</p>
-                <p><i class="fas fa-map-marker-alt"></i> Auckland, New Zealand</p>
-                
-                <div class="contact-social">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            
-            <form class="contact-form">
-                <h2>Send a Message</h2>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+        <li class="ondemand-dropdown">
+          <!-- Bottone del menu -->
+          <a
+            href="#"
+            id="onDemandButton"
+            class="flex items-center space-x-2"
+            aria-label="On-Demand"
+          >
+            <img src="icons/ondemand.png" alt="On-Demand" class="w-6 h-6" />
+            <span class="label">On-Demand</span>
+          </a>
+
+          <!-- Menu a tendina -->
+          <ul id="onDemandMenu" class="ondemand-menu hidden">
+            <li>
+              <a
+                href="oil-painting"
+                class="flex items-center px-4 py-2 hover:bg-gray-200"
+              >
+                <img src="icons/oil.png" alt="Oil" class="w-5 h-5 mr-2" /> Oil
+                Painting
+              </a>
+            </li>
+            <li>
+              <a
+                href="acrylic-painting"
+                class="flex items-center px-4 py-2 hover:bg-gray-200"
+              >
+                <img
+                  src="icons/acrylic.png"
+                  alt="Acrylic"
+                  class="w-5 h-5 mr-2"
+                />
+                Acrylic Painting
+              </a>
+            </li>
+            <li>
+              <a
+                href="fantasy-made"
+                class="flex items-center px-4 py-2 hover:bg-gray-200"
+              >
+                <img src="icons/ai.png" alt="AI Art" class="w-5 h-5 mr-2" />
+                Fantasy Made (AI Art)
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- CONTENUTO PAGINA CONTATTI -->
+    <main class="contact-section">
+      <h1>Contact me</h1>
+      <p>Write something in the text box or write me on my social media!</p>
+
+      <form class="contact-form" action="https://formspree.io/f/xovdqggv" method="POST">
+        <input type="hidden" name="_redirect" value="thankyou.html">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>© 2025 VIVO ART</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p>7windmill@gmail.com</p>
+        <p>© 2025 VIVO ART. All rights reserved.</p>
+        <p><h5>Website created by Matija Micheli</h5></p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/blue.dragon.79097" target="_blank"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="https://www.redbubble.com/people/7Bluedragon" target="_blank">
+          <img src="icons/redb.png" alt="Red Bubble" style="width: 35px; height: 35px; margin-top: 2px; filter: grayscale(100%) contrast(120%);
+          transition: 0.3s ease;">
+          </a>
         </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        <p>7windmill@gmail.com</p>
+      </footer>
+  
+    <script src="script.js" defer></script>
+    </body>
+  </html>
