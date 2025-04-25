@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="VIVO ART - Modern Art Portfolio. Impressionistic painter and art therapist based in New Zealand."/>
+    <title>VIVO ART - Modern Art Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Oregano:ital@0;1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <img class="logo" src="logo.png" alt="VIVO ART Logo" />
+      </div>
+      <h1>Vivo Art</h1>
+    </header>
+
+<nav class="main-menu">
+  <ul>
+    <li>
+      <a href="index.html" aria-label="Home" class="menu-link">
+        <img src="icons/home.png" alt="Home" class="menu-icon">
+        <span class="label">Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="portfolio.html" aria-label="Gallery" class="menu-link">
+        <img src="icons/art-gallery.png" alt="Gallery" class="menu-icon">
+        <span class="label">Gallery</span>
+      </a>
+    </li>
+    <li>
+      <a href="contacts.html" aria-label="Contacts" class="menu-link">
+        <img src="icons/communicate.png" alt="Contacts" class="menu-icon">
+        <span class="label">Contacts</span>
+      </a>
+    </li>
+
+    <li class="ondemand-dropdown">
+  <!-- Bottone del menu -->
+  <a href="#" id="onDemandButton" class="flex items-center space-x-2" aria-label="On-Demand">
+    <img src="icons/ondemand.png" alt="On-Demand" class="w-6 h-6">
+    <span class="label">On-Demand</span>
+  </a>
+  
+  <!-- Menu a tendina -->
+  <ul id="onDemandMenu" class="ondemand-menu hidden">
+    <li><a href="oil-painting" class="flex items-center px-4 py-2 hover:bg-gray-200">
+      <img src="icons/oil.png" alt="Oil" class="w-5 h-5 mr-2"> Oil Painting
+    </a></li>
+    <li><a href="acrylic-painting" class="flex items-center px-4 py-2 hover:bg-gray-200">
+      <img src="icons/acrylic.png" alt="Acrylic" class="w-5 h-5 mr-2"> Acrylic Painting
+    </a></li>
+    <li><a href="fantasy-made" class="flex items-center px-4 py-2 hover:bg-gray-200">
+      <img src="icons/ai.png" alt="AI Art" class="w-5 h-5 mr-2"> Fantasy Made (AI Art)
+    </a></li>
+  </ul>
+</li>
+
+  </ul>
+</nav>
+<main>
+
+        <section class="gallery">
+    
+        <h2>Gallery</h2>
+
+            <div class="filter-buttons">
+                <button data-filter="all">All</button>
+                <button data-filter="acrylic">Acrylic</button>
+                <button data-filter="ai">Digital Art</button>
+            </div>
+
+            <div class="grid">
+                <div class="artwork acrylic">
+                    <img src="Opere/IMG_3894.webp" alt="Opera 1">
+                <div class="info">
+                    <h3>Opera 1</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/Cute alpaca spitting.png" alt="Cute alpacas spitting">
+                <div class="info">
+                    <h3>Cute alpacas spitting</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/IMG_3899.webp" alt="Opera 2">
+                <div class="info">
+                    <h3>Opera 2</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/Human nature J2.png" alt="Human nature J2">
+                <div class="info">
+                    <h3>Human nature J2</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/IMG_3907.webp" alt="Opera 3">
+                <div class="info">
+                    <h3>Opera 3</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/Human nature J3.png" alt="Human nature J3">
+                <div class="info">
+                    <h3>Human nature J3</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera 19.jpeg" alt="Opera 4">
+                <div class="info">
+                    <h3>Opera 4</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/human nature J4.png" alt="Human nature J4">
+                <div class="info">
+                    <h3>Human nature J4</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera1.jpg" alt="Opera 5">
+                <div class="info">
+                    <h3>Opera 5</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/human nature J5.png" alt="Human nature J5">
+                <div class="info">
+                    <h3>Human nature J5</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera12.jpg" alt="Opera 6">
+                <div class="info">
+                    <h3>Opera 6</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/Human nature J6.png" alt="Human nature J6">
+                <div class="info">
+                    <h3>Human nature J6</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera13.jpg" alt="Opera 7">
+                <div class="info">
+                    <h3>Opera 7</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/New Zealand Haka.png" alt="New Zealand Haka">
+                <div class="info">
+                    <h3>New Zealand Haka</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera14.jpg" alt="Opera 8">
+                <div class="info">
+                    <h3>Opera 8</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/Retro Beauty pin up.png" alt="Retro Beauty pin up">
+                <div class="info">
+                    <h3>Retro Beauty pin up</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera17.jpg" alt="Opera 9">
+                <div class="info">
+                    <h3>Opera 9</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/Spirit of the Land.png" alt="Spirit of the land">
+                <div class="info">
+                    <h3>Spirit of the land</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera18.jpg" alt="Opera 10">
+                <div class="info">
+                    <h3>Opera 10</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                <div class="artwork ai">
+                    <img src="AI/The spirit of Aotearoa Maori Haka.png" alt="The spirit of Aotearoa Maori Haka">
+                <div class="info">
+                    <h3>The spirit of Aotearoa Maori Haka</h3>
+                    <p>Available in different dimensions - price $</p>
+                </div>
+                </div>
+
+                <div class="artwork acrylic">
+                    <img src="Opere/opera2.jpg" alt="Opera 11">
+                <div class="info">
+                    <h3>Opera 11</h3>
+                    <p>Painting style , dimensions & price $</p>
+                </div>
+                </div>
+
+                
+
+                
+
+            </div>
+
+
+        </section>
+
+
+
+</main>
+<div id="lightbox" class="hidden">
+  <span class="close">&times;</span>
+  <img id="lightbox-img" src="" alt="Expanded artwork">
+</div>
+</body>
+<footer>
+      <p>© 2025 VIVO ART. All rights reserved.</p>
+      <p><h5>Website created by Matija Micheli</h5></p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/blue.dragon.79097" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://www.redbubble.com/people/7Bluedragon" target="_blank">
+        <img src="icons/redb.png" alt="Red Bubble" style="width: 35px; height: 35px; margin-top: 2px; filter: grayscale(100%) contrast(120%);
+        transition: 0.3s ease;">
+        </a>
+      </div>
+      <p>7windmill@gmail.com</p>
+    </footer>
+
+  <script src="script.js" defer></script>
+  </body>
+</html>
