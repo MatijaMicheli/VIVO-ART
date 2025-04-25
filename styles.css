@@ -559,12 +559,12 @@ header h1 {
 
 .banner .model {
   position: absolute;
-  width: 200px; /* Regola secondo le tue esigenze */
-  height: 350px;
+  width: 230px; /* Regola secondo le tue esigenze */
+  height: 450px;
   bottom: 17%;
   left: 50%;
   transform: translateX(-50%);
-  background-image: url(model.png);
+  background-image: url(model01.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -772,30 +772,20 @@ footer p {
   .text-block p {
     height: 470px;
     margin-top: 80px;
+    line-height: 3;
   }
   
+  .gallery {
+    grid-column: 1 / -1;    
+    max-width: none;          
+    margin: 0 auto;
+  }
   
   .media-pair {
     margin-top: 40px;
   }
 
-  .slider-3d-container {
-    max-width: 1800px;  
-    width: 100vw;
-    margin: 0 auto 1 rem;
-  }
-
-  .banner .content {
-    padding-bottom: 1rem;
-  }
-
-  /* se preferisci gestire direttamente la banner */
-  .banner {
-    width: 100%;            /* riempie il parent */
-    max-width: 1800px;      /* stesso limite */
-    left: 50%;              /* serve se hai position: absolute */
-    transform: translateX(-50%);
-  }
+  
 
 }
 
