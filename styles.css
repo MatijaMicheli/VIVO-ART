@@ -65,7 +65,7 @@ header {
 }
 
 /* Animazione migliorata con riempimento progressivo */
-@keyframes dash {
+@keyframes draw {
   to {
     stroke-dashoffset: 0;
   }
@@ -83,8 +83,7 @@ header {
   stroke: gold;
   stroke-width: 0.8;
   fill: transparent;
-  animation: 
-    dash 3.5s ease-out forwards,
+  draw 3.5s ease-out forwards,
     fill-gold 1s ease-out 3.5s forwards;
 }
 
@@ -255,7 +254,6 @@ header {
   visibility: hidden;
   transform: translateY(-10px); /* Modificato da scaleY a translateY */
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  display: block;
   position: absolute;
   border-radius: 4px; /* Aggiunto per arrotondare gli angoli */
   text-align: right;
@@ -267,7 +265,7 @@ header {
 }
 
 .ondemand-menu:not(.hidden) {
-  display: block; /* Mantieni anche nello stato aperto */
+  display: block;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -276,8 +274,6 @@ header {
 .ondemand-menu li {
   width: 100%;
   margin: 0 auto;
-  
-
 }
 
 .ondemand-menu li a {
@@ -789,49 +785,7 @@ footer p {
   );
 }
 
-  /* ==== MENU ===== */
-
-  .main-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 0;
-    margin: 0;
-  }
-
-  .main-menu ul {
-    flex-direction: row;
-    justify-content: center;
-    gap: 58px;
-    min-width: min-content;
-  }
-
-  .main-menu li {
-    padding: 6px 12px;
-    margin: 0;
-  }
-
-  .main-menu li a img {
-    width: 34px;
-    height: 34px;
-    transform: none;
-  }
-
-  .main-menu a {
-    padding: 0 34px;
-    flex-direction: row;
-    gap: 2px;
-  }
-
-  .main-menu .label {
-    font-size: 1rem;
-    position: static;
-    transform: none;
-    opacity: 1;
-    text-align: center;
-    width: 100%;
-  }
-
+  
   main {
     display: grid;
     grid-template-areas:
@@ -976,10 +930,6 @@ footer p {
 }
 
 @media (max-width: 1024px) {
-  head {
-    display: flex;
-    justify-content: space-around;
-  }
 
   /* ==== MENU ===== */
 
@@ -1041,49 +991,6 @@ footer p {
   );
 }
 
-  /* ==== MENU ===== */
-
-  .main-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 0;
-    margin: 0;
-  }
-
-  .main-menu ul {
-    flex-direction: row;
-    justify-content: center;
-    gap: 58px;
-    min-width: min-content;
-  }
-
-  .main-menu li {
-    padding: 6px 12px;
-    margin: 0;
-  }
-
-  .main-menu li a img {
-    width: 34px;
-    height: 34px;
-    transform: none;
-  }
-
-  .main-menu a {
-    padding: 0 34px;
-    flex-direction: row;
-    gap: 2px;
-  }
-
-  .main-menu .label {
-    font-size: 1rem;
-    position: static;
-    transform: none;
-    opacity: 1;
-    text-align: center;
-    width: 100%;
-  }
-
 .video-container {
   margin: 40px 0;
   max-height: 570px;
@@ -1137,11 +1044,6 @@ footer p {
 }
 
 @media (max-width: 992px) {
-  head {
-    display: flex;
-    justify-content: space-between;
-  }
-
 
       /* ==== MENU ===== */
 
@@ -1320,7 +1222,7 @@ footer p {
   }
 
   .text-block p {
-    padding 20px auto;
+    padding: 20px;
   }
 
   .content-row {
