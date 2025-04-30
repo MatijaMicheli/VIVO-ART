@@ -1,33 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-// ————————— ARTWORK ANIMATION —————————
+  // ————————— ARTWORK ANIMATION —————————
   const artwork = document.querySelectorAll(".artwork");
-  artwork.forEach((el, i) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-    setTimeout(() => {
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }, 100 * i + 300);
-  });
 
-// ----------- SCRITTA PARTICELLE --------
-function createParticles() {
-  const container = document.querySelector('.header-title');
-  for (let i = 0; i < 20; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'gold-particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
-    particle.style.animationDelay = Math.random() * 2 + 's';
-    container.appendChild(particle);
+  if (artwork.length) {
+    artwork.forEach((el, i) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+      setTimeout(() => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }, 100 * i + 300);
+    });
   }
-}
-createParticles();
 
-
+  // ----------- SCRITTA PARTICELLE --------
+  function createParticles() {
+    const container = document.querySelector('.header-title');
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'gold-particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+      particle.style.animationDelay = Math.random() * 2 + 's';
+      container.appendChild(particle);
+    }
+  }
+  createParticles();
 
   // ————————— FILTRI —————————
   const buttons = document.querySelectorAll("[data-filter]");
