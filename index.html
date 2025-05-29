@@ -7,7 +7,8 @@
     <title>VIVO ART - Modern Art Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Oregano:ital@0;1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -83,77 +84,46 @@
     </header>
 
 <nav class="main-menu">
-  <ul>
-    <li>
-      <a href="index.html" aria-label="Home" class="menu-link">
-        <img src="icons/home.png" alt="Home" class="menu-icon">
-        <span class="label">Home</span>
-      </a>
-    </li>
-    <li>
-      <a href="gallery.html" aria-label="Gallery" class="menu-link">
-        <img src="icons/art-gallery.png" alt="Gallery" class="menu-icon">
-        <span class="label">Gallery</span>
-      </a>
-    </li>
-    <li>
-      <a href="contacts.html" aria-label="Contacts" class="menu-link">
-        <img src="icons/communicate.png" alt="Contacts" class="menu-icon">
-        <span class="label">Contacts</span>
-      </a>
-    </li>
+    <ul>
+      <li><a href="index.html" class="menu-link"><img src="icons/home.png" alt=""><span>Home</span></a></li>
+      <li><a href="gallery.html" class="menu-link"><img src="icons/art-gallery.png" alt=""><span>Gallery</span></a></li>
+      <li><a href="contacts.html" class="menu-link"><img src="icons/communicate.png" alt=""><span>Contacts</span></a></li>
+      <li class="ondemand-dropdown">
+        <button id="onDemandButton" aria-haspopup="true" aria-expanded="false" class="menu-link">
+          <img src="icons/ondemand.png" alt=""><span>On-Demand</span>
+        </button>
+        <ul id="onDemandMenu" class="ondemand-menu hidden">
+          <li><a href="#acrylic"><img src="icons/acrylic.png" alt="">Handmade Paintings</a></li>
+          <li><a href="#digital"><img src="icons/ai.png" alt="">Digital Art</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
-    <li class="ondemand-dropdown">
-  <!-- Bottone del menu -->
-  <a href="#" id="onDemandButton" class="flex items-center space-x-2" aria-label="On-Demand">
-    <img src="icons/ondemand.png" alt="On-Demand" class="w-6 h-6">
-    <span class="label">On-Demand</span>
-  </a>
-  
-  <!-- Menu a tendina -->
-  <ul id="onDemandMenu" class="ondemand-menu hidden">
-    <li><a href=#acrylic" class="flex items-center px-4 py-2 hover:bg-gray-200">
-      <img src="icons/acrylic.png" alt="Acrylic" class="w-5 h-5 mr-2"> Handmade Paintings
-    </a></li>
-    <li><a href="#digital" class="flex items-center px-4 py-2 hover:bg-gray-200">
-      <img src="icons/ai.png" alt="Digital" class="w-5 h-5 mr-2"> ART
-    </a></li>
-  </ul>
-</li>
-
-  </ul>
-</nav>
-
-  <main role="main">
-    <div class="aurora-container">
-      <div class="content-row">
-        <div class="video-container">
-          <video src="aurora.mp4" class="aurora-video" muted></video>
-          </div>
-            <div class="text-block">
+  <main>
+    <!-- Hero -->
+    <section class="aurora-container">
+      <video src="aurora.mp4" class="aurora-video" muted preload="metadata"></video>
+      <div class="text-block">
               <p>
               I’m an impressionistic painter and art therapist. My most inspiring
               journey and source of artistic energy is beautiful New Zealand.
               Through my work, I express bright energy, joy in the moment, and a
               sense of hope. Thank you for being here.
               </p>
-            </div>
-          
-        </div>
-      </div>
-    
-      <div class="media-pair">
-        <div class="artist-photo-container">
-          <img src="jane.png" alt="Artist at Work" class="artist-photo" />
-    </div>
-      <div class="bottom-video-container">
-        <video src="whale.mp4" class="bottom-video" muted playsinline preload="auto"></video>
-      </div>
-    </div>
+             </div>
+    </section>
 
-    <div class="slider-3d-container">
+    
+       <section class="media-pair">
+      <img src="jane.png" alt="Artist at Work" class="artist-photo" />
+      <video src="whale.mp4" class="bottom-video" muted playsinline preload="auto"></video>
+    </section>
+
+    <!-- Slider 3D -->
+    <section class="slider-3d-container">
       <div class="banner">
-        <div class="slider" style="--quantity: 11">
+        <div class="slider" style="--quantity:11">
           <div class="opera" style="--position: 1">
             <img src="Opere/opera27.jpg" alt="Opera 12" />
           </div>
@@ -187,32 +157,20 @@
           <div class="opera" style="--position: 11">
             <img src="Opere/opera1.jpg" alt="Opera 9" />
           </div>
-        </div>
-        <div class="content">
-
-          </div>
-          <div class="model"></div>
-        </div>
       </div>
-<div class="gold-particles"></div>
+    </section>
   </main>
 
-
-    <footer>
-      <p>© 2025 VIVO ART. All rights reserved.</p>
-      <p><h5>Website created by Matija Micheli</h5></p>
-      <div class="social-links">
-        <a href="https://www.facebook.com/blue.dragon.79097" target="_blank"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a href="https://www.redbubble.com/people/7Bluedragon" target="_blank">
-        <img src="icons/redb.png" alt="Red Bubble" style="width: 35px; height: 35px; margin-top: 2px; filter: grayscale(100%) contrast(120%);
-        transition: 0.3s ease;">
-        </a>
-      </div>
-      <p>7windmill@gmail.com</p>
-    </footer>
+  <footer>
+    <p>© 2025 VIVO ART. All rights reserved.</p>
+    <p>Website created by Matija Micheli</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/blue.dragon.79097"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.redbubble.com/people/7Bluedragon"><img src="icons/redb.png" alt="Red Bubble"></a>
+    </div>
+    <p>7windmill@gmail.com</p>
+  </footer>
 
   <script src="script.js" defer></script>
-  </body>
+</body>
 </html>
