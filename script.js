@@ -164,3 +164,25 @@ if (galleryTitle) {
 }
 
 });
+
+// ————— MODALE VIEW PRODUCT —————
+const buttons = document.querySelectorAll('.viewProductBtn');
+
+buttons.forEach(btn => {
+  const modal = btn.closest('section').querySelector('.productModal');
+  const span = modal.querySelector('.close');
+
+  btn.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+
+  span.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
