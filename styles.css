@@ -16,11 +16,12 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f2efe8;
-  background-image: url("sfondo.jpg");
-  background-repeat: no-repeat;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
+              url('sfondo.jpg');
+  background-repeat: repeat-y; /* Ripetizione verticale */
   background-size: cover;
-  background-position: center;
 }
+
 
 a {
   text-decoration: none;
@@ -54,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 1.7rem;
   line-height: 1.8;
   color: #4a4a4a;
   max-width: 700px;
@@ -69,7 +70,7 @@ p {
 }
 
 .container {
-  width: min(1200px, 100% - 2rem);
+  width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -174,6 +175,7 @@ header {
   align-items: center;
   position: sticky;
   top: 0;
+  overflow: visible;
   z-index: 999;
   background-color: var(--color-primary);
   padding: 0 1rem;
@@ -228,19 +230,26 @@ header {
 
 .main-menu .ondemand-dropdown {
   position: relative;
+  align-self: flex-start;
 }
 .ondemand-menu {
   position: absolute;
   top: 100%; right: 0;
-  width: 120px;
-  background-color: var(--color-light);
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: auto;
+  min-width: 250px;
+  max-width: 300px;
+  background-color: rgba(10, 25, 47, 0.95); 
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,215,0,0.3);
   list-style: none;
-  padding: 0.25rem 0;
+  padding: 1rem;
   opacity: 0; visibility: hidden;
   transform: translateY(-10px);
-  transition: all 0.3s;
+  transition: 
+    opacity 0.3s ease, 
+    visibility 0.3s ease, 
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1000;
 }
 .ondemand-menu:not(.hidden) {
   opacity: 1; visibility: visible; transform: translateY(0);
@@ -248,10 +257,12 @@ header {
 .ondemand-menu li a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  padding: 0.35rem 0.75rem;
-  color: var(--color-primary);
+  gap: 0.75rem;
+  font-size: 1rem;
+  padding: 0.8rem 1.2rem;
+  color: white;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
 }
 .ondemand-menu li a img {
   width: 20px;               /* prima era 27-28px */
@@ -259,8 +270,38 @@ header {
   margin-right: 0.5rem;      /* spazio ottimizzato fra icona e testo */
 }
 .ondemand-menu li a:hover {
-  background-color: var(--color-secondary);
+  background-color: rgba(255, 215, 0, 0.15);
+  color: var(--color-secondary);
+  border-left: 3px solid var(--color-secondary);
 }
+
+.ondemand-menu li a:hover img {
+  transform: scale(1.15);
+  filter: invert(0.8) sepia(1) saturate(5) hue-rotate(0deg);
+}
+
+.main-menu .ondemand-dropdown > .menu-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.main-menu .ondemand-dropdown > .menu-link::after {
+  content: "▼";
+  font-size: 0.5rem;
+  margin-left: 5px;
+  color: var(--color-secondary);
+  transition: transform 0.3s;
+}
+
+.ondemand-menu:not(.hidden) + .menu-link::after {
+  transform: rotate(180deg);
+}
+
+.main-menu .ondemand-dropdown > .menu-link.menu-open::after {
+  transform: rotate(180deg);
+}
+
 
 /* =========================================
    Hero / Aurora Section
@@ -628,6 +669,12 @@ footer p { margin: 10px 0; }
    Responsive / Mobile
    ========================================= */
 @media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+    
+  }
+
   /* Menu */
   .main-menu img { width: 34px; height: 34px; }
   .main-menu .label { font-size: 1rem; }
@@ -660,9 +707,13 @@ footer p { margin: 10px 0; }
   }
 
   .ondemand-menu {
-    width: auto;
-    min-width: 100px;          /* ancora più stretto */
-    padding: 0.15rem 0;        /* meno padding verticale */
+    position: fixed;
+    width: 90vw;
+    max-width: 300px;
+    right: 5vw;
+    left: auto;
+    top: 120px;
+    z-index: 1000;
   }
 
    .main-menu ul {
@@ -675,16 +726,23 @@ footer p { margin: 10px 0; }
   }
 
   .ondemand-menu li a {
-    font-size: 0.75rem;        /* testo più piccolo */
-    padding: 0.25rem 0.5rem;    /* padding orizzontale ridotto */
-    gap: 0.25rem;              /* spazio tra icona e testo */
+    font-size: 0.85rem;   
+    padding: 0.50rem 0.8rem; 
+    gap: 0.25rem; 
+    color: var(--color-white) !important;
   }
 
   .ondemand-menu li a img {
-    width: 12px;
-    height: 12px;
-    margin-right: 0.25rem;
+    width: 20px;
+    height: 20px;
+    filter: invert(1) brightness(1.5);
+    transition: transform 0.2s;
   }
+
+  .ondemand-dropdown {
+  position: relative;
+  display: inline-block; /* Aggiunto per contenere il menu a tendina */
+}
 
   .main-menu img {
   width: 16px;
@@ -696,8 +754,9 @@ footer p { margin: 10px 0; }
   /* Paragrafi */
   p {
     padding: 0 1rem;
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     line-height: 1.9;
+    text-align: center;
   }
 
   /* Gallery full width */

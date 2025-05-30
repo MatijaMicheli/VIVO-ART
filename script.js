@@ -94,17 +94,25 @@ document.addEventListener("DOMContentLoaded", () => {
     onDemandButton.setAttribute("aria-expanded", "false");
 
     const handleToggle = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      void onDemandMenu.offsetHeight;
-      const isHidden = onDemandMenu.classList.toggle("hidden");
-      onDemandButton.setAttribute("aria-expanded", isHidden ? "false" : "true");
-      if (!isHidden) {
-        onDemandMenu.querySelector("a").focus();
-      } else {
-        onDemandButton.focus();
-      }
-    };
+  e.preventDefault();
+  e.stopPropagation();
+  void onDemandMenu.offsetHeight;
+  const isHidden = onDemandMenu.classList.toggle("hidden");
+  onDemandButton.setAttribute("aria-expanded", isHidden ? "false" : "true");
+  
+  // Aggiungi/rimuovi classe per la freccia
+  if (isHidden) {
+    onDemandButton.classList.remove("menu-open");
+  } else {
+    onDemandButton.classList.add("menu-open");
+  }
+  
+  if (!isHidden) {
+    onDemandMenu.querySelector("a").focus();
+  } else {
+    onDemandButton.focus();
+  }
+};
 
     onDemandButton.addEventListener("click", handleToggle);
     onDemandButton.addEventListener("touchstart", handleToggle);
