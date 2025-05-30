@@ -792,11 +792,16 @@ header {
    Footer
    ========================================= */
 footer {
-  background-color: #222; color: white;
+  background-color: var(--color-primary); /* sfondo scuro */
+  color: var(--color-secondary); /* testo dorato per contrasto */
+  padding: 2rem 1rem;
+  font-weight: 600;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
   text-align: center; padding: 30px 0; margin-top: 50px;
 }
 
 footer p { 
+  color: #f0f0f0;
   max-width: none;       /* rimuove il limite di 700px */
   width: fit-content;    /* o width: auto; */
   margin: 10px auto;     /* auto sui lati orizzontali centra il box */
