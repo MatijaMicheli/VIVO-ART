@@ -136,17 +136,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ————————— VIDEO SOPRA LO SLIDER —————————
-  const bottomVideo = document.querySelector(".bottom-video");
-  if (bottomVideo) {
-    bottomVideo.currentTime = 0;
-    bottomVideo.play().catch(() => {
-      console.log("Autoplay bloccato: interagisci per avviare il video.");
-    });
-    bottomVideo.style.opacity = 1;
+const bottomVideo = document.querySelector(".bottom-video");
+if (bottomVideo) {
+  bottomVideo.currentTime = 0;
+  bottomVideo.play().catch(() => {
+    console.log("Autoplay bloccato: interagisci per avviare il video.");
+  });
+  bottomVideo.style.opacity = 1;
 
-    setInterval(() => {
-      bottomVideo.currentTime = 0;
-      bottomVideo.play();
-    }, 10000);
-  }
+  setInterval(() => {
+    bottomVideo.currentTime = 0;
+    bottomVideo.play();
+  }, 10000);
+}
+
+// —————— TOUCH SCALE + DARKEN ——————
+document.querySelectorAll('.text-block p').forEach(p => {
+  p.addEventListener('touchstart', () => p.classList.add('touch-active'));
+  p.addEventListener('touchend',   () => p.classList.remove('touch-active'));
+  p.addEventListener('touchcancel',() => p.classList.remove('touch-active'));
+});
+
+// ——— Popola data-text per il glitch title ———
+const galleryTitle = document.querySelector('.my-gallery-title');
+if (galleryTitle) {
+  galleryTitle.setAttribute('data-text', galleryTitle.textContent.trim());
+}
+
 });
