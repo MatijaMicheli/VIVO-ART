@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main        # o il ramo principale del tuo repo
+  branch: main
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
@@ -14,8 +14,8 @@ collections:
     extension: "json"
     format: "json"
     fields:
-      - { label: "ID",           name: "id",          widget: "string" }
-      - { label: "Title",        name: "title",       widget: "string" }
-      - { label: "Description",  name: "description", widget: "text" }
-      - { label: "Category",     name: "category",    widget: "select", options: ["acrylic", "ai"] }
-      - { label: "Image",        name: "image",       widget: "image" }
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["acrylic", "ai"] }
+      - { label: "Image", name: "image", widget: "image" }
