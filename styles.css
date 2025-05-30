@@ -229,8 +229,9 @@ header {
 }
 
 .main-menu .ondemand-dropdown {
-  position: relative;
-  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .ondemand-menu {
   position: absolute;
@@ -281,9 +282,10 @@ header {
 }
 
 .main-menu .ondemand-dropdown > .menu-link {
+  height: 100%;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  padding: 0.5rem 0.75rem; /* Assicurati che corrisponda agli altri menu-link */
 }
 
 .main-menu .ondemand-dropdown > .menu-link::after {
@@ -302,6 +304,26 @@ header {
   transform: rotate(180deg);
 }
 
+.main-menu a.menu-link,
+.main-menu button.menu-link {
+  all: unset; /* solo per il button, verrà ignorato per gli <a> */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-white);
+  font-weight: bold;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.main-menu a.menu-link:hover,
+.main-menu button.menu-link:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
 
 /* =========================================
    Hero / Aurora Section
@@ -735,14 +757,20 @@ footer p { margin: 10px 0; }
   .ondemand-menu li a img {
     width: 20px;
     height: 20px;
-    filter: invert(1) brightness(1.5);
+    filter: invert(1) brightness(1.2);
     transition: transform 0.2s;
   }
 
   .ondemand-dropdown {
   position: relative;
+    font-size: 0.8rem;
   display: inline-block; /* Aggiunto per contenere il menu a tendina */
 }
+
+  .on-demand-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
 
   .main-menu img {
   width: 16px;
