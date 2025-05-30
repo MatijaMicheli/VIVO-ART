@@ -344,7 +344,7 @@ header {
   position: absolute;
   inset: 0;
   background: url("sfondo.jpg") center/cover no-repeat;
-  filter: blur(8px) brightness(0.8);
+  filter: blur(8px) brightness(0.9);
   z-index: 0;
 }
 .aurora-container > * {
@@ -381,13 +381,21 @@ header {
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #222;               /* più contrasto sullo sfondo chiaro */
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease,
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+  border-radius: 4px; /* regola a piacere */
 }
 
-.text-block p:hover {
-  color: var(--color-secondary);
-  text-shadow: 0 0 6px var(--color-secondary);
+.text-block p:hover,
+.text-block p.touch-active,
+.text-block p:active {
+  transform: scale(1.05);
 }
+
+
 .btn-primary {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -402,34 +410,8 @@ header {
   transform: scale(1.05);
 }
 
-/* =========================================
-   Media Pair
-   ========================================= */
-.media-pair {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 2rem;
-  margin: 2rem 1rem;
-}
-.artist-photo,
-.bottom-video {
-  border-radius: 4px;
-  object-fit: cover;
-  opacity: 0.9;
-}
 .bottom-video {
   clip-path: inset(0 0 50px 0);
-}
-
-/* Hover effects on images */
-.media-pair img,
-.artwork img {
-  transition: transform 0.3s, filter 0.3s;
-}
-.media-pair img:hover,
-.artwork img:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1) contrast(1.05);
 }
 
 /* =========================================
@@ -447,7 +429,7 @@ header {
 .bottom-video {
   border-radius: 4px;
   object-fit: cover;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .media-pair img,
@@ -793,6 +775,21 @@ footer p { margin: 10px 0; }
     line-height: 1.9;
     text-align: center;
   }
+
+  .text-block p:active {
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,0.8),
+      0 0 15px 8px rgba(255,255,255,0.4) inset;
+  }
+
+  .text-block p:hover,
+.text-block p.touch-active,
+.text-block p:active {
+  background-color: rgba(0, 0, 0, 0.2);     /* scurisce leggermente */
+  
+}
 
   /* Gallery full width */
   .gallery { grid-column: 1 / -1; margin: 0 auto; max-width: none; }
