@@ -739,12 +739,12 @@ footer p { margin: 10px 0; }
   }
 
    .main-menu ul {
-    gap: 0.25rem;
+    gap: 0.15rem;
     justify-content: center;
   }
   .main-menu a.menu-link {
-    font-size: 0.8rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.20rem;
   }
 
   .ondemand-menu li a {
@@ -762,15 +762,21 @@ footer p { margin: 10px 0; }
   }
 
   .ondemand-dropdown {
-  position: relative;
+    position: relative;
     font-size: 0.8rem;
-  display: inline-block; /* Aggiunto per contenere il menu a tendina */
+    display: inline-block; /* Aggiunto per contenere il menu a tendina */
 }
 
   .on-demand-button {
     width: 100%;
     box-sizing: border-box;
   }
+
+  .main-menu .ondemand-dropdown > .menu-link::after {
+  font-size: 0.5rem;
+  margin: 0;
+
+}
 
   .main-menu img {
   width: 16px;
