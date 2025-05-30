@@ -235,9 +235,12 @@ header {
 }
 .ondemand-menu {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   top: 100%;
   width: auto;
-  min-width: 350px;
+  min-width: 150px;
   max-width: 500px;
   background-color: rgba(10, 25, 47, 0.95); 
   border-radius: 6px;
@@ -260,7 +263,10 @@ header {
   align-items: center;
   gap: 0.75rem;
   font-size: 1rem;
-  padding: 0.8rem 1.2rem;
+  justify-content: flex-end; /* sposta il contenuto (icona+testo) verso destra */
+  text-align: right;         /* nel caso tu abbia più righe di testo */
+  width: 100%;               /* occupi tutta la larghezza del box */
+  padding: 0 1rem; 
   color: white;
   border-left: 3px solid transparent;
   transition: all 0.3s ease;
@@ -577,7 +583,7 @@ header {
   font-size: 3rem;
   color: #0ff;
   letter-spacing: 0.2em;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   z-index: 20;
   overflow: hidden;
   
@@ -963,12 +969,15 @@ footer p {
 
   .ondemand-menu {
     position: fixed;
-    width: 90vw;
-    max-width: 300px;
-    right: 5vw;
+     width: 220px;      /* scegli il valore che preferisci */
+    min-width: unset;  /* disabilita il min-width precedente */
+    max-width: none;
+    right: 0;
     left: auto;
     top: 120px;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
   }
 
    .main-menu ul {
@@ -1044,7 +1053,7 @@ footer p {
 .my-gallery-title {
     font-size: 2rem;
     letter-spacing: 0.1em;
-    padding: 0.3rem 0.6rem;
+    padding: 0.5rem 0.6rem;
     text-shadow: 0 0 3px #0ff, 0 0 6px #0ff, 0 0 12px #0ff;
   }
   /* rallenta il glitch su mobile */
