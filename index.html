@@ -14,6 +14,7 @@
   </head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3ZP4VFB1Y"></script>
+<script src="https://cdn.plyr.io/4.0.0/plyr.polyfilled.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -189,6 +190,41 @@ The sky parts to reveal the path of those before us. In hues of green and violet
           </div>
       </div>
     </section>
+
+      <!-- VIDEO SOTTO LO SLIDER 3D -->
+    <section class="video-section">
+  <div class="elegant-video-title">
+    <h1>Personal Art Show</h1>
+  </div>
+
+  <div class="video-container">
+    <!-- Play button -->
+    <button class="video-play-button" id="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 100 100" class="play-icon">
+        <polygon points="40,30 70,50 40,70" />
+      </svg>
+    </button>
+
+    <!-- Video fuori dal button -->
+    <video
+      id="art-video"
+      class="bottom-video"
+      poster="video-poster.png"
+      preload="metadata"
+      controls
+    >
+      <!-- perché il file è in root, basta il nome -->
+      <source src="art-library.mp4" type="video/mp4">
+      Il tuo browser non supporta il video HTML5.
+    </video>
+  </div>
+
+  <div class="divider"></div>
+  <div class="option-label">
+    Exhibition at East Gate Mall – Christchurch (whole month of June 2025)
+  </div>
+</section>
+
   </main>
 
 <footer>
