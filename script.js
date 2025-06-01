@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ————————— LIGHTBOX CON PREZZI DINAMICI - FIX MOBILE —————————
+  // ————————— LIGHTBOX CON PREZZI DINAMICI - FIX COMPLETO —————————
 const images = document.querySelectorAll(".artwork img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.querySelector("#lightbox img");
@@ -79,17 +79,33 @@ if (lightbox && lightboxImage) {
       const title = artwork.querySelector('h3').textContent;
       const description = artwork.querySelector('p').textContent;
       
-      // ✅ LEGGI IL PREZZO DAL DATA-PRICE
+      // ✅ FIX PER PREZZI CON VIRGOLA - Gestione migliorata
       const priceData = artwork.getAttribute('data-price');
       let priceDisplay;
       
-      if (priceData && priceData !== 'null' && priceData.trim() !== '') {
-        // Se c'è un prezzo specifico, usalo
-        priceDisplay = `$NZ ${priceData}`;
+      // Controlla se il prezzo esiste e non è vuoto/null
+      if (priceData && 
+          priceData !== 'null' && 
+          priceData !== 'undefined' && 
+          priceData.trim() !== '' && 
+          priceData.trim() !== '0') {
+        
+        // Pulisci il prezzo da eventuali caratteri non desiderati
+        const cleanPrice = priceData.trim();
+        
+        // Se il prezzo contiene già il simbolo della valuta, usalo così com'è
+        if (cleanPrice.includes('$') || cleanPrice.includes('€') || cleanPrice.includes('£')) {
+          priceDisplay = cleanPrice;
+        } else {
+          // Altrimenti aggiungi il simbolo NZ$
+          priceDisplay = `NZ$ ${cleanPrice}`;
+        }
       } else {
-        // Se non c'è prezzo o è vuoto, mostra "Price upon request"
+        // Se non c'è prezzo valido, mostra "Price upon request"
         priceDisplay = 'Price upon request';
       }
+      
+      console.log('Price data:', priceData, '-> Display:', priceDisplay); // Debug
       
       // Rimuovi eventuali info precedenti
       const existingInfo = lightbox.querySelector('.lightbox-info');
@@ -111,7 +127,7 @@ if (lightbox && lightboxImage) {
           <span class="price-label">Price:</span>
           <span class="price-value">${priceDisplay}</span>
         </div>
-        <button class="btn-contact">Contact me for the purchase</button>
+        <button class="btn-contact" onclick="window.location.href='mailto:your-email@example.com?subject=Inquiry about ${encodeURIComponent(title)}'">Contact me for purchase</button>
       `;
       
       // Aggiungi bottone chiudi
@@ -120,7 +136,6 @@ if (lightbox && lightboxImage) {
       closeBtn.innerHTML = '&times;';
       closeBtn.addEventListener('click', () => {
         lightbox.classList.add("hidden");
-        // ✅ Riabilita scroll del body
         document.body.classList.remove('lightbox-open');
       });
       
@@ -137,10 +152,10 @@ if (lightbox && lightboxImage) {
       lightboxImage.src = img.src;
       lightbox.classList.remove("hidden");
       
-      // ✅ Previeni scroll del body su mobile
+      // Previeni scroll del body su mobile
       document.body.classList.add('lightbox-open');
       
-      // ✅ Scrolla in cima al lightbox
+      // Scrolla in cima al lightbox
       lightbox.scrollTop = 0;
     });
   });
@@ -149,12 +164,11 @@ if (lightbox && lightboxImage) {
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
       lightbox.classList.add("hidden");
-      // ✅ Riabilita scroll del body
       document.body.classList.remove('lightbox-open');
     }
   });
 
-  // ✅ Chiudi con tasto ESC
+  // Chiudi con tasto ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
       lightbox.classList.add("hidden");
@@ -242,7 +256,7 @@ if (lightbox && lightboxImage) {
 
 });
 
-// ————— MODALE VIEW PRODUCT —————
+// ————— MODALE VIEW PRODUCT CON PREZZI —————
 const buttons = document.querySelectorAll('.viewProductBtn');
 
 buttons.forEach(btn => {
@@ -251,15 +265,66 @@ buttons.forEach(btn => {
 
   btn.addEventListener('click', () => {
     modal.style.display = 'block';
+    // Previeni scroll del body
+    document.body.style.overflow = 'hidden';
+    
+    // Aggiungi il prezzo se non è già presente
+    const modalContent = modal.querySelector('.modal-content');
+    if (!modalContent.querySelector('.modal-price')) {
+      // ✅ PRENDI IL PREZZO DAL DATA-PRICE DEL MODALE
+      const priceData = modal.getAttribute('data-price');
+      let priceDisplay;
+      
+      // Gestisci il prezzo come nel lightbox
+      if (priceData && 
+          priceData !== 'null' && 
+          priceData !== 'undefined' && 
+          priceData.trim() !== '' && 
+          priceData.trim() !== '0') {
+        
+        const cleanPrice = priceData.trim();
+        
+        if (cleanPrice.includes('$') || cleanPrice.includes('€') || cleanPrice.includes('£')) {
+          priceDisplay = cleanPrice;
+        } else {
+          priceDisplay = `NZ$ ${cleanPrice}`;
+        }
+      } else {
+        priceDisplay = 'Price upon request';
+      }
+      
+      const priceDiv = document.createElement('div');
+      priceDiv.className = 'modal-price';
+      priceDiv.innerHTML = `
+        <span class="price-label">Price</span>
+        <span class="price-amount">${priceDisplay}</span>
+      `;
+      
+      // Inserisci il prezzo dopo la descrizione
+      const description = modalContent.querySelector('p');
+      description.parentNode.insertBefore(priceDiv, description.nextSibling);
+    }
   });
 
   span.addEventListener('click', () => {
     modal.style.display = 'none';
+    // Riabilita scroll del body
+    document.body.style.overflow = 'auto';
   });
 
-  window.addEventListener('click', (event) => {
+  // Chiudi cliccando fuori dal modal
+  modal.addEventListener('click', (event) => {
     if (event.target === modal) {
       modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Chiudi con tasto ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
   });
 });
