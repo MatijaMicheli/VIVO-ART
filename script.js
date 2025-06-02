@@ -17,14 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // ----------- SCRITTA PARTICELLE --------
   function createParticles() {
     const container = document.querySelector('.header-title');
-    for (let i = 0; i < 20; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'gold-particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
-      particle.style.animationDelay = Math.random() * 2 + 's';
-      container.appendChild(particle);
+    if (container) {
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'gold-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        container.appendChild(particle);
+      }
     }
   }
   createParticles();
@@ -61,22 +63,120 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ————————— LIGHTBOX CON PREZZI DINAMICI —————————
+  // ————————— LIGHTBOX CON PREZZI DINAMICI - IMPLEMENTAZIONE CORRETTA —————————
   const images = document.querySelectorAll(".artwork img");
   const lightbox = document.getElementById("lightbox");
-  const lightboxImage = lightbox?.querySelector('img');
+  const lightboxImage = lightbox?.querySelector('#lightbox-img');
+  let lightboxInfo = lightbox?.querySelector('.lightbox-info');
+  
+  // Crea la struttura della lightbox se non esiste
+  if (lightbox && !lightboxInfo) {
+    lightboxInfo = document.createElement('div');
+    lightboxInfo.className = 'lightbox-info';
+    lightbox.appendChild(lightboxInfo);
+  }
+  
+  // Funzione per popolare la lightbox info
+  function populateLightboxInfo(title, description, price) {
+    if (!lightboxInfo) return;
+    
+    // Pulisci il contenuto esistente
+    lightboxInfo.innerHTML = '';
+    
+    // Crea titolo
+    const titleEl = document.createElement('h2');
+    titleEl.textContent = title;
+    lightboxInfo.appendChild(titleEl);
+    
+    // Crea descrizione
+    const descEl = document.createElement('p');
+    descEl.textContent = description;
+    lightboxInfo.appendChild(descEl);
+    
+    // Crea prezzo
+    const priceDiv = document.createElement('div');
+    priceDiv.className = 'price-tag';
+    
+    const priceLabel = document.createElement('span');
+    priceLabel.className = 'price-label';
+    priceLabel.textContent = 'Price';
+    
+    const priceValue = document.createElement('span');
+    priceValue.className = 'price-value';
+    
+    if (price && price.trim() && price !== '0') {
+      const cleanPrice = price.trim();
+      const displayPrice = (/[€$£]/.test(cleanPrice)) ? cleanPrice : `NZ$ ${cleanPrice}`;
+      priceValue.textContent = displayPrice;
+    } else {
+      priceValue.textContent = 'Price upon request';
+    }
+    
+    priceDiv.appendChild(priceLabel);
+    priceDiv.appendChild(priceValue);
+    lightboxInfo.appendChild(priceDiv);
+    
+    // Crea bottone contatto
+    const contactBtn = document.createElement('button');
+    contactBtn.className = 'btn-contact';
+    contactBtn.textContent = 'Contact for Details';
+    contactBtn.addEventListener('click', () => {
+      // Qui puoi aggiungere la logica per aprire un form di contatto
+      alert('Contact form would open here');
+    });
+    lightboxInfo.appendChild(contactBtn);
+  }
+  
+  // Funzione per toggleare la lightbox
+  function toggleLightbox(show, imgSrc = '', title = '', description = '', price = '') {
+    if (!lightbox) return;
+    
+    if (show) {
+      lightbox.classList.remove('hidden');
+      if (lightboxImage) {
+        lightboxImage.src = imgSrc;
+        lightboxImage.alt = title;
+      }
+      
+      // Popola le informazioni
+      populateLightboxInfo(title, description, price);
+      
+      document.body.style.overflow = 'hidden';
+    } else {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+  }
+
   if (lightbox && lightboxImage) {
     images.forEach(img => {
       img.addEventListener("click", () => {
-        // info and price logic...
+        const artwork = img.closest('.artwork');
+        const title = artwork?.querySelector('h3')?.textContent || 'Untitled';
+        const description = artwork?.querySelector('.info p')?.textContent || 'No description available';
+        const price = artwork?.dataset.price || '';
+        
+        toggleLightbox(true, img.src, title, description, price);
       });
     });
+    
+    // Chiudi lightbox cliccando sullo sfondo
     lightbox.addEventListener("click", e => {
       if (e.target === lightbox) toggleLightbox(false);
     });
+    
+    // Chiudi lightbox con ESC
     document.addEventListener("keydown", e => {
-      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) toggleLightbox(false);
+      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+        toggleLightbox(false);
+      }
     });
+    
+    // Chiudi lightbox con il bottone X
+    const closeBtn = lightbox.querySelector('.close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => toggleLightbox(false));
+    }
   }
 
   // ————————— MENU ON-DEMAND —————————
@@ -106,13 +206,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ————————— VIDEO SOPRA E SOTTO LO SLIDER —————————
+  // ————————— VIDEO SOPRA E SOTTO LO SLIDER - CORRETTO —————————
   document.querySelectorAll('.bottom-video, #art-video').forEach(videoEl => {
     if (videoEl.classList.contains('bottom-video')) {
       videoEl.play().catch(()=>{});
-      setInterval(()=>{ videoEl.currentTime = 0; videoEl.play(); }, 10000);
     }
-    videoEl.addEventListener('click', ()=> videoEl.play());
+    
+    videoEl.addEventListener('click', ()=> {
+      if (videoEl.paused) {
+        videoEl.play();
+      } else {
+        videoEl.pause();
+      }
+    });
   });
 
   // —————— PLAY BUTTON PER #art-video ——————
@@ -120,8 +226,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const artVideoEl= document.getElementById('art-video');
   const videoCont = document.querySelector('.video-container');
   if (playBtn && artVideoEl && videoCont) {
-    playBtn.addEventListener('click', () => { artVideoEl.play(); videoCont.classList.add('video-playing'); });
+    playBtn.addEventListener('click', () => { 
+      artVideoEl.play(); 
+      videoCont.classList.add('video-playing'); 
+    });
     artVideoEl.addEventListener('pause', () => videoCont.classList.remove('video-playing'));
+    artVideoEl.addEventListener('ended', () => videoCont.classList.remove('video-playing'));
   }
 
   // —————— TOUCH SCALE + DARKEN ——————
@@ -141,6 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const productButtons = document.querySelectorAll('.viewProductBtn');
   productButtons.forEach(btn => {
     const modal = btn.closest('section').querySelector('.productModal');
+    if (!modal) return;
+    
     const span  = modal.querySelector('.close');
     btn.addEventListener('click', () => {
       const content = modal.querySelector('.modal-content');
@@ -159,9 +271,13 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
     });
-    span.addEventListener('click', closeModal);
+    
+    if (span) {
+      span.addEventListener('click', closeModal);
+    }
     modal.addEventListener('click', e => { if (e.target===modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+    
     function closeModal() {
       modal.style.display = 'none';
       document.body.style.overflow = 'auto';

@@ -755,7 +755,7 @@ header {
 }
 
 /* =========================================
-   Lightbox con Immagini Completamente Visibili - AGGIORNATO
+   Lightbox 
    ========================================= */
 
 #lightbox {
@@ -777,25 +777,27 @@ header {
 }
 
 /* Container principale del lightbox */
+/* Container principale del lightbox */
 .lightbox-container {
   display: flex;
-  max-width: 95vw;
+  flex-direction: column;
+  max-width: 90vw;
   max-height: none;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: center;
   margin: auto 0;
 }
 
 /* IMMAGINE COMPLETAMENTE VISIBILE */
 #lightbox img {
-  max-width: 65vw; /* Aumentato da 60vw */
-  max-height: none; /* Rimosso il limite di altezza */
-  min-height: auto; /* Permetti altezza naturale */
+  max-width: 90vw;
+  max-height: 70vh; /* Lascia spazio per le info sotto */
+  min-height: auto;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.8);
   object-fit: contain; /* Mantiene le proporzioni */
-  width: auto; /* Larghezza automatica */
-  height: auto; /* Altezza automatica */
+  width: auto;
+  height: auto;
 }
 
 /* Pannello informazioni */
@@ -804,14 +806,14 @@ header {
   backdrop-filter: blur(20px);
   border-radius: 16px;
   padding: 2rem;
-  min-width: 280px;
-  max-width: 320px;
+  min-width: 320px;
+  max-width: 500px;
+  width: 100%;
   box-shadow: 0 15px 35px rgba(0,0,0,0.3);
   border: 1px solid rgba(255,255,255,0.2);
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  align-self: flex-start; /* Allinea in alto */
 }
 
 /* Tag prezzo moderno */
@@ -1254,7 +1256,7 @@ footer p {
 
 
 /* Titolo Elegante e Moderno */
-        .elegant-video-title {
+  .elegant-video-title {
             position: relative;
             text-align: center;
             margin: 2rem auto 3rem;
@@ -1360,7 +1362,7 @@ footer p {
   50%     { box-shadow: 0 0 20px rgba(0,255,255,0.8); }
 }
 
-/* Quando il video parte, nascondi il pulsante */
+
 .video-playing .video-play-button {
   display: none;
 }
@@ -1455,7 +1457,6 @@ footer p {
   transition: transform 0.3s;
 }
 
-  /* Paragrafi */
   p {
     padding: 0 1rem;
     font-size: 1.5rem;
@@ -1483,7 +1484,6 @@ footer p {
     padding: 0.5rem 0.6rem;
     text-shadow: 0 0 3px #0ff, 0 0 6px #0ff, 0 0 12px #0ff;
   }
-  /* rallenta il glitch su mobile */
   .my-gallery-title::before { animation-duration: 3s; }
   .my-gallery-title::after  { animation-duration: 2.5s; }
   .my-gallery-title {
@@ -1511,40 +1511,71 @@ footer p {
     font-size: 0.9rem;
   }
 
+
+  /* LIGHTBOX MOBILE - Layout verticale */
   #lightbox {
     padding: 1rem;
     align-items: flex-start;
+    justify-content: flex-start;
     padding-top: 60px;
-    max-height: none;
+    max-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
   
   .lightbox-container {
-    flex-direction: column;
+    flex-direction: column !important;
     max-width: 100%;
     width: 100%;
-    gap: 1.5rem;
+    gap: 0;
     margin: 0;
     min-height: auto;
+    align-items: stretch;
   }
   
-  /* IMMAGINE MOBILE COMPLETAMENTE VISIBILE */
-  #lightbox img {
-    max-width: 100%;
-    width: 100%;
-    max-height: none; /* Rimuovi limite altezza anche su mobile */
-    min-height: auto;
-    object-fit: contain;
-    height: auto;
+  /* IMMAGINE LIGHTBOX MOBILE - Tutta la larghezza */
+  #lightbox img,
+  #lightbox-img {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 50vh !important; /* Metà viewport per lasciare spazio alle info */
+    min-height: auto !important;
+    object-fit: contain !important;
+    height: auto !important;
+    display: block;
+    margin: 0;
+    border-radius: 8px;
   }
   
+  /* INFO SOTTO L'IMMAGINE */
   .lightbox-info {
     min-width: auto;
     max-width: 100%;
     width: 100%;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
+    margin: 0;
+    background: rgba(0,0,0,0.8);
+    border-radius: 8px;
+    margin-top: 1rem;
   }
 
+  /* Pulsante chiudi più visibile */
+  #lightbox .close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
 .modal-content img {
     width: 100%;
     max-width: 100%;
@@ -1563,6 +1594,3 @@ footer p {
   /* Gallery full width */
   .gallery { grid-column: 1 / -1; margin: 0 auto; max-width: none; }
 }
-
-/* breakpoints aggiuntivi (1366, 1024, 992, 600, 480, 390px) */
-/* ... puoi aggiungere analoghi aggiustamenti se servono */
