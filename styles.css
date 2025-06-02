@@ -18,7 +18,7 @@ body {
   background-color: #f2efe8;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
               url('sfondo.jpg');
-  background-repeat: repeat-y; /* Ripetizione verticale */
+  background-repeat: repeat-y;
   background-size: cover;
 }
 

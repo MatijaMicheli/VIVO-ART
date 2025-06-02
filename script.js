@@ -247,6 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
     galleryTitle.setAttribute('data-text', galleryTitle.textContent.trim());
   }
 
+  
+
   // ————— MODALE VIEW PRODUCT CON PREZZI —————
   const productButtons = document.querySelectorAll('.viewProductBtn');
   productButtons.forEach(btn => {
