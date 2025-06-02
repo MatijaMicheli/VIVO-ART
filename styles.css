@@ -776,8 +776,6 @@ header {
   display: none; 
 }
 
-/* Container principale del lightbox */
-/* Container principale del lightbox */
 .lightbox-container {
   display: flex;
   flex-direction: column;
@@ -979,6 +977,7 @@ header {
   width: 100%;
   height: auto;
   display: block;
+  cursor: pointer;
   transition: transform 0.3s;
 }
 
