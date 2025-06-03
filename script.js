@@ -247,8 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
     galleryTitle.setAttribute('data-text', galleryTitle.textContent.trim());
   }
 
-  
-
   // ————— MODALE VIEW PRODUCT CON PREZZI —————
   const productButtons = document.querySelectorAll('.viewProductBtn');
   productButtons.forEach(btn => {
@@ -278,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
       span.addEventListener('click', closeModal);
     }
     modal.addEventListener('click', e => { if (e.target===modal) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === 'Escape') closeModal(); });
     
     function closeModal() {
       modal.style.display = 'none';
@@ -286,4 +284,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-});
+  // ————————— VIDEO ARTISTICO —————————
+  const artVideo = document.querySelector('.video-container-art video');
+  const playButton = document.querySelector('.video-container-art .video-play-button');
+  const videoContainer = document.querySelector('.video-container-art');
+
+  if (artVideo && playButton) {
+    // Gestione click sul pulsante
+    playButton.addEventListener('click', () => {
+      artVideo.play();
+      videoContainer.classList.add('video-playing');
+    });
+
+    // Autoplay dopo l'interazione
+    artVideo.addEventListener('play', () => {
+      videoContainer.classList.add('video-playing');
+    });
+    
+    // Mostra di nuovo il pulsante se il video viene messo in pausa
+    artVideo.addEventListener('pause', () => {
+      videoContainer.classList.remove('video-playing');
+    });
+  }
+
+});  

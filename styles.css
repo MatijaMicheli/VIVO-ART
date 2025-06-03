@@ -1366,6 +1366,79 @@ footer p {
   display: none;
 }
 
+/* Contenitore video con cornice artistica */
+.video-frame {
+  position: relative;
+  flex: 1 1 45%;
+  max-width: 600px;
+  padding: 12px;
+  background: linear-gradient(45deg, #d4af37, #f9d423);
+  border-radius: 12px;
+  box-shadow: 
+    0 0 0 4px rgba(212, 175, 55, 0.5),
+    0 0 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Adattamento perfetto del video */
+.video-container-art {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.video-container-art video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Pulsante play artistico */
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #0ff, #f0f) 1;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow:
+    0 0 15px rgba(0,255,255,0.6),
+    0 0 30px rgba(255,0,255,0.4);
+}
+
+.video-play-button .play-icon {
+  width: 40px;
+  height: 40px;
+  fill: white;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0,255,255,0.4); }
+  50%     { box-shadow: 0 0 20px rgba(0,255,255,0.8); }
+}
+
+/* Nascondi pulsante durante la riproduzione */
+.video-playing .video-play-button {
+  display: none;
+}
+
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
