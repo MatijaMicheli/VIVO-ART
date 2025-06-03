@@ -1439,6 +1439,74 @@ footer p {
   display: none;
 }
 
+/* ======================================
+   Effetti per “How it works” (lista OL)
+   ====================================== */
+
+/* 1. Rimuoviamo i marker di default e inizializziamo il contatore */
+.text-block ol {
+  list-style: none;
+  counter-reset: step;       /* azzera il contatore */
+  margin-left: 0;            /* togliamo il padding/margin di default */
+  padding-left: 0;
+}
+
+/* 2. Stili base per ogni <li> */
+.text-block ol li {
+  counter-increment: step;   /* incrementa il contatore di 1 per ogni <li> */
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem; /* spazio a sinistra per il cerchietto numerato */
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.8); /* sfondo leggermente traslucido */
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 3. Cerchietto numerato “personalizzato” prima di ogni <li> */
+.text-block ol li::before {
+  content: counter(step);       /* mostra il numero corrente */
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-secondary); /* dorato */
+  color: var(--color-primary);       /* testo scuro all’interno del cerchietto */
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 4. Hover / focus su ciascun <li> per un effetto leggero */
+.text-block ol li:hover {
+  background: rgba(255, 255, 255, 1);  /* sfondo completamente opaco */
+  transform: scale(1.02);               /* leggero ingrandimento */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.text-block ol li {
+  opacity: 0;
+  transform-origin: left center;
+  transform: translateX(-20px);
+  animation: fadeInStep 0.5s forwards;
+}
+.text-block ol li:nth-child(1) { animation-delay: 0.2s; }
+.text-block ol li:nth-child(2) { animation-delay: 0.4s; }
+.text-block ol li:nth-child(3) { animation-delay: 0.6s; }
+.text-block ol li:nth-child(4) { animation-delay: 0.8s; }
+/* ...e così via per eventuali altri <li> */
+@keyframes fadeInStep {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
@@ -1543,12 +1611,6 @@ footer p {
       0 0 0 2px rgba(255,255,255,0.8),
       0 0 15px 8px rgba(255,255,255,0.4) inset;
   }
-
-  .text-block p:hover,
-.text-block p.touch-active,
-.text-block p:active {
-  background-color: rgba(0, 0, 0, 0.2);  
-}
 
 .my-gallery-title {
     font-size: 2rem;

@@ -285,26 +285,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ————————— VIDEO ARTISTICO —————————
-  const artVideo = document.querySelector('.video-container-art video');
-  const playButton = document.querySelector('.video-container-art .video-play-button');
-  const videoContainer = document.querySelector('.video-container-art');
+const artVideo = document.querySelector('.video-container-art video');
+const playButton = document.querySelector('.video-container-art .video-play-button');
+const videoContainer = document.querySelector('.video-container-art');
 
-  if (artVideo && playButton) {
-    // Gestione click sul pulsante
-    playButton.addEventListener('click', () => {
-      artVideo.play();
-      videoContainer.classList.add('video-playing');
-    });
+if (artVideo && playButton) {
+  playButton.addEventListener('click', () => {
+    artVideo.play();
+    videoContainer.classList.add('video-playing');
+  });
 
-    // Autoplay dopo l'interazione
-    artVideo.addEventListener('play', () => {
-      videoContainer.classList.add('video-playing');
-    });
-    
-    // Mostra di nuovo il pulsante se il video viene messo in pausa
-    artVideo.addEventListener('pause', () => {
-      videoContainer.classList.remove('video-playing');
-    });
-  }
+  artVideo.addEventListener('pause', () => {
+    videoContainer.classList.remove('video-playing');
+  });
+}
+
 
 });  
