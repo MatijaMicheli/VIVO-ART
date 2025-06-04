@@ -1,21 +1,28 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main          # o “master” se il tuo branch principale si chiama così
 
-media_folder: "static/uploads"
-public_folder: "/uploads"
+media_folder: "static/images"
+public_folder: "/images"
 
 collections:
-  - name: "gallery"
-    label: "Gallery"
-    folder: "data"
-    create: true
-    slug: "{{slug}}"
-    extension: "json"
-    format: "json"
-    fields:
-      - { label: "ID", name: "id", widget: "string" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Category", name: "category", widget: "select", options: ["acrylic", "ai"] }
-      - { label: "Image", name: "image", widget: "image" }
+  - name: "products"
+    label: "Prodotti"
+    files:
+      - label: "Elenco Prodotti"
+        name: "products"
+        file: "data/products.json"
+        fields:
+          - label: "Prodotti"
+            name: "products"
+            widget: "list"
+            types:
+              - label: "Singolo prodotto"
+                name: "product"
+                widget: "object"
+                fields:
+                  - { label: "Titolo",       name: "title",       widget: "string" }
+                  - { label: "Descrizione",  name: "description", widget: "text" }
+                  - { label: "Prezzo",       name: "price",       widget: "number" }
+                  - { label: "Categoria",    name: "category",    widget: "select", options: ["acrylic","ai"] }
+                  - { label: "Immagine",     name: "image",       widget: "image" }
