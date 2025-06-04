@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <title>Content Manager</title>
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- DECAP CMS v3 (il nome “@decapcms/app” è quello corretto) -->
+    <script src="https://unpkg.com/@decapcms/app@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <!-- Questo div è fondamentale -->
+    <!-- Questo div è fondamentale: qui Decap CMS renderizzerà l’interfaccia -->
     <div id="nc-root"></div>
 
     <script>
