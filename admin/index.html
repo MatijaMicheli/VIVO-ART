@@ -7,18 +7,17 @@
     <!-- 1) Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- 2) NETLIFY CMS v2 (la versione 2.x più affidabile) -->
+    <!-- 2) Netlify CMS v2 -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <!-- 3) DIV OBBLIGATORIO: Netlify CMS monterà qui l’interfaccia -->
+    <!-- DIV OBBLIGATORIO: qui Netlify CMS si monterà -->
     <div id="nc-root"></div>
 
     <script>
-      // 4) Inizializziamo Netlify Identity: senza questo, NetlifyIdentity sarà undefined
+      // Inizializziamo Netlify Identity
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
-          // Se non c’è utente loggato, attivo il listener per il login
           if (!user) {
             window.netlifyIdentity.on("login", () => {
               document.location.href = "/admin/index.html";
@@ -26,7 +25,6 @@
           }
         });
       }
-      // Avvia il widget di Netlify Identity
       NetlifyIdentity.init();
     </script>
   </body>
