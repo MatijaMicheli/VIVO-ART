@@ -3,18 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <title>Content Manager</title>
-    <!-- Netlify Identity Widget -->
+    <!-- 1) Netlify Identity Widget (serve per il login) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <!-- DECAP CMS v3 (il nome “@decapcms/app” è quello corretto) -->
-    <script src="https://unpkg.com/@decapcms/app@^3.0.0/dist/decap-cms.js"></script>
+
+    <!--
+      2) DECAP CMS (ex Netlify CMS v3+)
+      NOTA: qui usiamo jsDelivr anziché unpkg, perché jsDelivr serve
+      sempre il file con il corretto Content-Type=application/javascript.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/@decapcms/app@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <!-- Questo div è fondamentale: qui Decap CMS renderizzerà l’interfaccia -->
+    <!-- 
+      3) Questo div è obbligatorio: 
+      Decap CMS monterà qui tutta l’interfaccia utente 
+    -->
     <div id="nc-root"></div>
 
     <script>
+      // 4) Inizializziamo Netlify Identity. 
+      //    Al login, Decap CMS si “risveglia” dentro #nc-root
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
+        window.netlifyIdentity.on("init", (user) => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
               document.location.href = "/admin/index.html";
@@ -22,6 +32,7 @@
           }
         });
       }
+      // Avvia il widget di Netlify Identity
       NetlifyIdentity.init();
     </script>
   </body>
