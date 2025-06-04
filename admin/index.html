@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>VivoArt CMS</title>
-        <link rel="stylesheet" href="../assets/styles.css" />
+
+    <!-- Collegamento ai tuoi stili -->
+    <link rel="stylesheet" href="../assets/styles.css" />
   </head>
   <body>
-    <!-- Widget di Netlify Identity -->
+    <!-- ✅ Contenitore per Netlify CMS -->
+    <div id="cms"></div>
+
+    <!-- ✅ Widget di Netlify Identity -->
     <script src="/assets/js/netlify-identity-widget.js"></script>
 
-    <!-- Inizializza Netlify Identity se disponibile -->
+    <!-- ✅ Inizializzazione Netlify Identity -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
@@ -22,7 +27,7 @@
       }
     </script>
 
-    <!-- Netlify CMS -->
+    <!-- ✅ Netlify CMS -->
     <script src="/assets/js/netlify-cms.js"></script>
   </body>
 </html>
