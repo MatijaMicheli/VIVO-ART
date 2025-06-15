@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main                # oppure il tuo branch di default
+
+media_folder: "static/uploads"   # dove salvare i file (locale)
+public_folder: "/uploads"        # come saranno serviti in produzione
+
+collections:
+  - name: "acrylic"
+    label: "Acrylic Art"
+    folder: "content/acrylic"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title",      name: "title",       widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price",      name: "price",       widget: "number" }
+      - { label: "Imagine",    name: "image",       widget: "image" }
+      - { label: "Contact (URL o mail)", name: "contact_url", widget: "string" }
+
+  - name: "digital"
+    label: "Digital Art"
+    folder: "content/digital"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title",      name: "title",       widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price",      name: "price",       widget: "number" }
+      - { label: "Imagine",    name: "image",       widget: "image" }
+      - { label: "Contact (URL o mail)", name: "contact_url", widget: "string" }
