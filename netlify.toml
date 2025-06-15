@@ -2,4 +2,4 @@
   # nessun comando di build
   command = ""
   # pubblica la root del repo
-  publish = "."
+  publish = "public"
